@@ -239,7 +239,7 @@ What about containers? As this moment *(2018)*, containers are a standard in ord
 
 We need to have a mongodb database to make this application run. So, we need a mongodb container with some data. Please, use the [restaurant](./data/restaurant.json) dataset to load the mongodb collection before running the application.
 
-The loaded mongodb collection must be named: `restaurant`. You have to write some code? or Dockerfile to make this possible.
+The loaded mongodb collection must be named: `restaurant`. Do you have to write code or just write a Docker file?
 
 ### Challenge 5. Docker Compose it
 
