@@ -26,6 +26,8 @@ jobs:
             fi
             IMAGE_NAME=the-real-devops-challenge
             IMAGE_TAG=$BRANCH_TAG_PREFIX-$SHORT_COMMIT_HASH
+            echo 'export IMAGE_NAME=the-real-devops-challenge' >> $BASH_ENV
+            echo 'export IMAGE_TAG=$BRANCH_TAG_PREFIX-$SHORT_COMMIT_HASH' >> $BASH_ENV
 
       - run:
           name: Build docker image
