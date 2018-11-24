@@ -36,7 +36,7 @@ jobs:
           name: Push docker image
           command: |
             docker login -u $DOCKER_LOGIN -p $DOCKER_PWD
-            docker push angulito/$IMAGE_NAME:$TAG
+            docker push angulito/$IMAGE_NAME:$IMAGE_TAG
 
   deploy:
     docker:
