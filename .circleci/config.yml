@@ -15,6 +15,9 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
 
+      - setup_remote_docker:
+          version: 18.03.0-ce
+
       - run:
           name: Set docker image tag
           command: |
