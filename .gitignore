@@ -137,6 +137,10 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+# MongoDB
+# mongo data volume
+data/db/
+
 # Pyre type checker
 .pyre/
 
