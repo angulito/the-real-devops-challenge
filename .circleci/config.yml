@@ -18,16 +18,16 @@ jobs:
       - run:
           name: Set docker image tag
           command: |
-            TAG=0.1.${CIRCLE_BUILD_NUM}
+            SHORT_COMMIT_HASH="$(git rev-parse --short=8 HEAD)"
             if [ $CIRCLE_BRANCH == 'master' ]; then
                 BRANCH_TAG_PREFIX='master'
             else
                 BRANCH_TAG_PREFIX='branch'
             fi
             IMAGE_NAME=the-real-devops-challenge
-            IMAGE_TAG=$BRANCH_TAG_PREFIX-$TAG
+            IMAGE_TAG=$BRANCH_TAG_PREFIX-$SHORT_COMMIT_HASH
             echo 'export IMAGE_NAME=the-real-devops-challenge' >> $BASH_ENV
-            echo 'export IMAGE_TAG=$BRANCH_TAG_PREFIX-$TAG' >> $BASH_ENV
+            echo 'export IMAGE_TAG=${BRANCH_TAG_PREFIX}-${SHORT_COMMIT_HASH}' >> $BASH_ENV
 
       - run:
           name: Build docker image
