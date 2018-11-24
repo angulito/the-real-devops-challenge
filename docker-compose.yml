@@ -1,0 +1,53 @@
+version: '3.1'
+
+services:
+
+  challenge-app:
+      build: .
+      container_name: "challenge-app"
+      environment:
+          MONGO_URI: mongodb://challenge:xyz123@mongo:27017/the-real-devops-challenge
+      ports:
+          - 8080:8080
+      links:
+          - mongo
+      depends_on:
+          - mongo
+
+  mongo-seed:
+    build: ./mongo-seed
+    environment:
+      DB_USER: challenge
+      DB_PASSWORD: xyz123
+      DB_DATABASE: the-real-devops-challenge
+      WAIT_HOSTS: mongo:27017
+      WAIT_BEFORE_HOSTS: 20
+    links:
+        - mongo
+    depends_on:
+        - mongo
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the-real-devops-challenge
+    volumes:
+        - ./data/db:/data/db
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    links:
+        - mongo
+    depends_on:
+        - mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
