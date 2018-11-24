@@ -33,6 +33,7 @@ jobs:
             docker build -t angulito/$IMAGE_NAME:$IMAGE_TAG .
       - run:
           name: Push docker image
+          command: |
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push angulito/$IMAGE_NAME:$TAG
 
