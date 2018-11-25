@@ -46,7 +46,7 @@ jobs:
       - run:
           name: Deploy app to the cloud provider via Docker
           command: |
-            echo "TODO"
+            echo "Deploy to google cloud - step not implemented to avoid extra costs with google cloud - deployed manually when creating the doc"
 
   test:
     docker:

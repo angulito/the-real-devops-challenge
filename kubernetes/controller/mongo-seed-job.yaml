@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    name: mongo-seed
+  name: mongo-seed
+spec:
+  completions: 1
+  template:
+    metadata:
+      name: mongo-seed
+    spec:
+      containers:
+        - name: mongo-seed
+          image: mongo
+          command: ["mongoimport"]
+          args: ["--host", "mongo", "-p", "27017", "-d", "the-real-devops-challenge", "-c", "restaurant", "--type", "json", "--mode", "upsert", "--file", "/tmp/data/restaurant.json"]
+          volumeMounts:
+            - name: mongo-seed-data
+              mountPath: mongo-seed/data
+      restartPolicy: Never
+      volumes:
+        - name: mongo-seed-data
+          hostPath:
+            path: /tmp/data
+  backoffLimit: 0
