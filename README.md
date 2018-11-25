@@ -255,3 +255,7 @@ Once you've got dockerized all the API components *(python app and database)*, y
 If you are a container hero, an excellent devops... We want to see your expertise. Use a kubernetes system to deploy the `API`. We recommend you to use tools like [minikube](https://kubernetes.io/docs/setup/minikube/) or [microk8s](https://microk8s.io/).
 
 Write the deployment file *(yaml file)* used to deploy your `API` *(python app and mongodb)*.
+
+## Solution
+
+[Here](/doc/README.md) you can see the challenges solution purposed by [Natalia Angulo](github.com/angulito).
